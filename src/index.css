@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap");
+
+@theme {
+  --color-very-light: #f4f3f6;
+  --color-dark-light: #e4dfe6;
+  --color-gray: #a6a3af;
+  --color-mid-gray: #797681;
+  --color-dark-gray: #4b4852;
+  --color-light-black: #1A1820;
+  --color-black: #121014;
+
+  --font-inter: "Inter", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+  --font-mono-spline: "Spline Sans Mono", monospace;
+  --font-nexo: "nexo", sans-serif;
+}
+@font-face {
+  font-family: "nexo";
+  src: url(/fonts/nexokoratechnoregular-lvvad.woff2) format("woff2");
+}
+body{
+  font-family: var(--font-mono-spline);
+  color: var(--color-black);
+  background-color: var(--color-very-light);
+}
+
+
+
