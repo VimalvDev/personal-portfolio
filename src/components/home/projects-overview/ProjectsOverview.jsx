@@ -1,9 +1,99 @@
-import SplitText from "../../animation/SplitText";
 import { FaArrowRight } from "react-icons/fa";
-import ScrollHeading from "../../common/ScrollHeading";
-import UpText from "../../animation/UpText";
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { BP } from "../../../utils/BreakPoints";
+gsap.registerPlugin(ScrollTrigger);
 
-function Projects() {
+function ProjectsOverview() {
+  const headingSecRef = useRef(null);
+  const wrapperRef = useRef(null);
+
+  const centerRef = useRef(null);
+  const topRef = useRef(null);
+  const bottomRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      //desktop
+      mm.add(BP.desktop, () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: headingSecRef.current,
+            start: "top top",
+            end: "+=180%",
+            scrub: true,
+            pin: true,
+            pinSpacing: false,
+            // IMPORTANT: refreshPriority makes this pin more important than overlapping pins
+            // Higher value = higher priority. Use this to prevent conflicts with the
+            // main hero pin animation when ScrollHeading is active
+            refreshPriority: 0, // Pin this has higher priority than hero (default 0)
+          },
+        });
+
+        // slide inital values
+        gsap.set(topRef.current, {
+          xPercent: -100,
+        });
+        gsap.set(centerRef.current, {
+          xPercent: 100,
+        });
+        gsap.set(bottomRef.current, {
+          xPercent: -100,
+        });
+
+        tl.to([topRef.current, centerRef.current, bottomRef.current], {
+          xPercent: 0,
+          ease: "none",
+          duration: 1,
+        });
+
+        tl.to(
+          topRef.current,
+          {
+            yPercent: 100,
+            ease: "none",
+            duration: 1,
+          },
+          1,
+        );
+        tl.to(
+          bottomRef.current,
+          {
+            yPercent: -100,
+            ease: "none",
+            duration: 1,
+          },
+          1,
+        );
+
+        tl.to(
+          wrapperRef.current,
+          {
+            clipPath: "polygon(0 50%, 100% 50%, 100% 50%, 0 50%)",
+            ease: "none",
+            duration: 2,
+          },
+          2,
+        );
+      });
+
+      mm.add(BP.mobile, () => {
+        gsap.set(topRef.current, {
+          yPercent: 70,
+        });
+        gsap.set(bottomRef.current, {
+          yPercent: -70,
+        });
+      });
+    },
+    { scope: headingSecRef },
+  );
+
   const projectsData = [
     {
       src: "/imgs/portfolio.png",
@@ -40,10 +130,45 @@ function Projects() {
   ];
 
   return (
-    <>
-      <ScrollHeading text="my projects" xPos={-16}  />
+    <section ref={headingSecRef} >
+      <div
+        
+        className="min-h-[155vw] max-md:min-h-[5svh]  max-sm:pt-[1em] w-full overflow-hidden pt-[8em]"
+      >
+        <div
+          ref={wrapperRef}
+          className="h-full flex flex-col justify-start uppercase"
+        >
+          <div className="overflow-hidden">
+            <h1
+              ref={topRef}
+              className="w-screen text-center text-[18vw] md:text-[16vw] font-bold pt-[.1em] leading-[0.68]"
+            >
+              my projects
+            </h1>
+          </div>
 
-      <div className=" bg-very-light min-h-screen w-full flex-col px-[2em] max-sm:px-[1em]  py-[1em]   ">
+          <div className="overflow-hidden">
+            <h1
+              ref={centerRef}
+              className="w-screen text-center text-[18vw] md:text-[16vw] font-bold pt-[.1em] leading-[0.68]"
+            >
+              my projects{" "}
+            </h1>
+          </div>
+
+          <div className="overflow-hidden">
+            <h1
+              ref={bottomRef}
+              className="w-screen text-center text-[18vw] md:text-[16vw] font-bold pt-[.1em] leading-[0.68]"
+            >
+              my projects{" "}
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <div className="project_container bg-very-light min-h-screen w-full flex-col px-[2em] max-sm:px-[1em]  py-[1em]   ">
         <div className="project_top_text pt-[1em] max-sm:pt-0 mb-[2em]  ">
           <div className="page_project_number mb-[.5vw] ">
             <span className="uppercase text-mid-gray text-[clamp(.694rem,1vw,1rem)]  ">
@@ -52,7 +177,6 @@ function Projects() {
           </div>
 
           <div className="project_heading-text flex justify-between bo items-center ">
-
             <a
               href="#"
               className="project_type uppercase py-[1em] items-center flex gap-[1em] text-mid-gray "
@@ -115,8 +239,8 @@ function Projects() {
           );
         })}
       </div>
-    </>
+    </section>
   );
 }
 
-export default Projects;
+export default ProjectsOverview;

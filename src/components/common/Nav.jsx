@@ -1,42 +1,69 @@
 import React from "react";
 import { MdArrowOutward } from "react-icons/md";
+import { useLocation } from "react-router-dom";
 import { usePageTransition } from "../../hooks/usePageTransition";
 import DecryptedText from "../animation/motion/DecryptedText";
-import Magnet from "../animation/Magnet";
 
 function Nav() {
   const navigateWithTransition = usePageTransition();
-  const handleNavClick = (path) => {
+  const location = useLocation(); // Get current page location
+
+  /**
+   * NAVIGATION HANDLER EXPLANATION:
+   * Different navigation types require different handlers:
+   *
+   * 1. PAGES (Cross-page navigation):
+   *    - Home page ("/") - uses page transition animation
+   *    - Projects page ("/projects") - uses page transition animation
+   *
+   * 2. HASH LINKS (Same-page scroll):
+   *    - About ("#about") - scroll to element, no page change
+   *    - Skills ("#skills") - scroll to element, no page change
+   *    - Connect ("#connect") - scroll to element, no page change
+   */
+
+  // Handle cross-page navigation with transition animation
+  const handlePageNavigation = (path) => {
     navigateWithTransition(path);
   };
 
+  // Handle hash navigation - checks if on home page, then scrolls to element
+  const handleHashNavigation = (hash) => {
+    // If not on home page, navigate to home first with the hash
+    if (location.pathname !== "/") {
+      navigateWithTransition(`/${hash}`); // Navigate to home with hash (e.g., "/#about")
+      return;
+    }
+
+    // If already on home page, scroll smoothly to the element
+    setTimeout(() => {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // Small delay to ensure DOM is ready
+  };
+
   return (
-    <nav className="flex justify-between w-full px-[2em] h-[4.5em] max-sm:px-[1em]   items-center z-10  fixed mix-blend-difference text-gray ">
+    <nav className="flex justify-between w-full px-[2em] h-[4.5em] max-sm:px-[1em]   items-center z-10  fixed mix-blend-difference text-white ">
       {/* Logo - also clickable (goes to home) */}
       <div className="nav_logo text-[clamp(0.694rem,1.1vw,1.4rem)] ">
         <div
-          onClick={() => handleNavClick("/")}
+          onClick={() => handlePageNavigation("/")}
           className="cursor-pointer hover:opacity-80 transition-opacity py-[1em] "
         >
-          <Magnet
-            padding={50}
-            magnetStrength={50}
-          >
-
           VIMAL.DEV
-
-          </Magnet>
         </div>
       </div>
 
       {/* Navigation Links */}
-      <div className="nav_link max-sm:hidden ">
+      <div className="nav_link ">
         <ul className="uppercase text-[clamp(0.694rem,1vw,1.3rem)] flex gap-[1em] ">
-          {/* About Link with animation */}
+          {/* HOME: Page navigation - goes to home page */}
           <li>
             <div
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
-              onClick={() => handleNavClick("/")}
+              onClick={() => handlePageNavigation("/")}
             >
               <span>[</span>
               <DecryptedText
@@ -50,10 +77,12 @@ function Nav() {
               <span>]</span>
             </div>
           </li>
+
+          {/* ABOUT: Hash navigation - scrolls to #about on home page */}
           <li>
             <div
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
-              onClick={() => handleNavClick("/about")}
+              onClick={() => handleHashNavigation("#about")}
             >
               <span>[</span>
               <DecryptedText
@@ -68,11 +97,11 @@ function Nav() {
             </div>
           </li>
 
-          {/* Projects Link with animation */}
+          {/* PROJECTS: Page navigation - goes to /projects page */}
           <li>
             <div
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
-              onClick={() => handleNavClick("/projects")}
+              onClick={() => handlePageNavigation("/projects")}
             >
               <span>[</span>
               <DecryptedText
@@ -87,11 +116,11 @@ function Nav() {
             </div>
           </li>
 
-          {/* Skills Link with animation */}
+          {/* SKILLS: Hash navigation - scrolls to #skills on home page */}
           <li>
             <div
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
-              onClick={() => handleNavClick("/skills")}
+              onClick={() => handleHashNavigation("#skills")}
             >
               <span>[</span>
               <DecryptedText
@@ -106,11 +135,11 @@ function Nav() {
             </div>
           </li>
 
-          {/* Connect Link with animation */}
+          {/* CONNECT: Hash navigation - scrolls to #connect on home page */}
           <li>
             <div
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
-              onClick={() => handleNavClick("/connect")}
+              onClick={() => handleHashNavigation("#connect")}
             >
               <span>[</span>
               <DecryptedText
@@ -128,7 +157,7 @@ function Nav() {
       </div>
 
       {/* Contact Link - external, no animation needed */}
-      <div className="nav_talk">
+      {/* <div className="nav_talk">
         <a
           href="mailto:hello@vimal.dev"
           className="flex py-[1.5em] items-center uppercase text-[clamp(0.694rem,1vw,1.1rem)] "
@@ -145,7 +174,7 @@ function Nav() {
           <MdArrowOutward className="ml-1 " />
           <span>]</span>
         </a>
-      </div>
+      </div> */}
     </nav>
   );
 }

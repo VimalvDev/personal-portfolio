@@ -9,40 +9,6 @@ import gsap from "gsap";
 
 function HeroBottomText() {
   const time = useClock("Asia/Kolkata");
-  const scrollRef = useRef(null);
-  const arrowRef = useRef(null);
-
-  useGSAP(() => {
-    // gsap.to(arrowRef.current, {
-    //   y: 4,
-    //   duration: 0.5,
-    //   yoyo: true,
-    //   repeat: -1,
-    // });
-
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        gsap.to(scrollRef.current, {
-          opacity: 0,
-          y: 10,
-          duration: 0.4,
-          ease: "power2.out",
-          pointerEvents: "none",
-        });
-      } else {
-        gsap.to(scrollRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          ease: "power2.out",
-          pointerEvents: "auto",
-        });
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="hero_bottom w-full flex relative items-end ">
@@ -52,20 +18,16 @@ function HeroBottomText() {
       </div>
 
       <div
-        ref={scrollRef}
-        className="hero_scroller max-sm:hidden uppercase w-[50%]"
+        className="hero_scroller max-sm:hidden uppercase w-[60vw]"
       >
-        <div className="flex justify-end items-center gap-[.5em] text-gray text-[clamp(0.694rem,1vw,1rem)]">
-          <span ref={arrowRef} className="inline-block">
-            <IoIosArrowDown className="w-[1.2em] h-[1.2em] " />
-          </span>
-          <span>scroll</span>
+        <div className="flex justify-end items-start  text-gray text-[clamp(0.694rem,1vw,1rem)]">
+          <span>[scroll to explore]</span>
         </div>
       </div>
 
-      <div className="hero_bottom_text w-[50%] h-full overflow-x-hidden text-right max-sm:w-full">
-        <div className="hero_bottom_text_container inline-block pl-[20em] max-sm:pl-0 max-sm:w-[70vw]">
-          <div className="top uppercase text-dark-gray text-[clamp(.694rem,1vw,1rem)] inline-block leading-[1.1em] max-sm:mb-[3em] mt-[1em] max-sm:text-[clamp(1.1rem,5vw,5rem)] cursor-target">
+      <div className="hero_bottom_text w-[50vw] h-full overflow-x-hidden text-right max-sm:w-full">
+        <div className="hero_bottom_text_container inline-block pl-[20em] max-sm:pl-0 max-sm:w-[65vw] max-sm:mb-[em]  ">
+          <div className="top uppercase text-dark-gray text-[clamp(.8rem,1vw,1rem)] inline-block leading-[1.1em] max-sm:mb-[1em] mt-[1em]  cursor-target">
             <UpText delay={0.9} duration={1} animateOnScroll={false}>
               <div className="flex flex-wrap justify-end text-right">
                 <DecryptedText
@@ -161,7 +123,7 @@ function HeroBottomText() {
           </div>
           <Border />
           <div className="bottom uppercase text-gray cursor-target">
-            <div className="text-[clamp(.694rem,1vw,1rem)] leading-[.9em] inline-block">
+            <div className="text-[clamp(.694rem,1vw,1rem)] leading-[.9em] tracking-tight inline-block">
               <UpText delay={0.9} duration={1} animateOnScroll={false}>
                 <div className="side_text flex flex-wrap">
                   <span>I design.</span> <span>I code. </span>

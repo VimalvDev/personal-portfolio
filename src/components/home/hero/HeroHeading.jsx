@@ -5,7 +5,7 @@ import UpText from "../../animation/UpText";
 function HeroHeading() {
   const skillData = ["web design", "web development"];
   return (
-    <div className="hero_top relative h-full w-full uppercase font-space pt-[7em] flex flex-col max-sm:pt-[10em]    ">
+    <div className="hero_top relative h-full w-full uppercase flex flex-col    ">
       <div className="project_number  ">
         <UpText delay={0.4} duration={1} animateOnScroll={false}>
           <span className="uppercase text-[clamp(.694rem,1vw,1rem)] leading-tight text-mid-gray ">
@@ -14,8 +14,8 @@ function HeroHeading() {
         </UpText>
       </div>
 
-      <div className="hero_text_bottom text-[clamp(10rem,20vw,20rem)] max-sm:text-[25vw] leading-[.83em] font-bebas ">
-        <div className="hero_text-heading overflow-hidden text-start ">
+      <div className="hero_text_bottom text-[clamp(10rem,21vw,21rem)] max-sm:text-[26vw] leading-[.83em] tracking-tight font-bebas ">
+        <div className="hero_text-heading  overflow-hidden text-start ">
           <UpText delay={0.4} duration={1} animateOnScroll={false}>
             <h1 className=" mt-[.05em] cursor-target inline-block ">
               creative
@@ -30,10 +30,10 @@ function HeroHeading() {
         </div>
       </div>
 
-      <div className="skills flex flex-col text-dark-gray   ">
+      <div className="skills flex flex-col text-dark-gray max-sm:mt-[2em]   ">
         {skillData.map((skill, index) => (
           <UpText key={index} delay={0.5 + index * .2} duration={1} animateOnScroll={false}>
-            <h2 className="font-normal inline-block font-bebas  leading-[.89] pt-[.1em] text-[clamp(1.728rem,3vw,3rem)] relative ">
+            <h2 className="font-normal inline-block font-bebas   leading-[.89] pt-[.1em] text-[clamp(1.728rem,3vw,3rem)] relative ">
               <span>[ {skill} ]</span>
             </h2>
           </UpText>
