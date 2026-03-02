@@ -55,7 +55,7 @@ html::-webkit-scrollbar {
 
 body {
   font-family: var(--font-mono);
-  background-color: var(--color-very-light);
+  background-color: black;
 }
 h1 {
   font-family: var(--font-bebas);

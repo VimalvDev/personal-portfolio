@@ -77,14 +77,14 @@ function Home() {
       <div ref={clipContainer} className="hero_container relative">
         {/* ========== HERO SECTION ========== */}
         <section ref={clipHeroSec} className="relative z-20 w-full ">
-          <div className="hero_page flex relative overflow-x-hidden pb-[2em] pt-[6em] bg-very-light min-h-screen w-full flex-col px-[2em] max-sm:px-[1em] justify-between  ">
+          <div className="hero_page flex relative overflow-x-hidden pb-[1.5em] pt-[6em] bg-very-light min-h-svh w-full flex-col px-[2em] max-sm:px-[1em] justify-between  ">
             <HeroHeading />
             <HeroBottomText />
           </div>
         </section>
 
         {/* ========== ABOUT HEADING (BEHIND HERO) ========== */}
-        <div className="absolute inset-0 w-full h-full bg-light-black text-white flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 w-full h-screen bg-light-black text-white flex items-center justify-center pointer-events-none">
           <div
             ref={aboutHeading}
             className="uppercase text-white flex justify-center flex-col"

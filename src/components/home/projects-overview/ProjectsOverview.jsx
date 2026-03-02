@@ -130,7 +130,7 @@ function ProjectsOverview() {
   ];
 
   return (
-    <section ref={headingSecRef} >
+    <section ref={headingSecRef} className="bg-very-light" >
       <div
         
         className="min-h-[155vw] max-md:min-h-[5svh]  max-sm:pt-[1em] w-full overflow-hidden pt-[8em]"

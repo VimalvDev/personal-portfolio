@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+import { MdArrowOutward } from "react-icons/md";
 
 // ── Register all GSAP plugins once at module level ──────────────────────────
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
@@ -12,22 +13,22 @@ const SLIDES = [
   {
     title:
       "A motion-driven portfolio designed to combine bold typography, smooth scrolling, and interactive transitions into a structured, modern web experience",
-    image: "/public/imgs/scene 1.png",
+    image: "/public/imgs/portfolio.png",
   },
   {
     title:
       "A PERN-based AI learning platform integrating RAG pipelines and LLM APIs to transform study materials into contextual Q&A, flashcards, and adaptive learning workflows.",
-    image: "/public/imgs/scene 2.png",
+    image: "/public/imgs/learnova.png",
   },
   {
     title:
       "A motion-driven portfolio designed to combine bold typography, smooth scrolling, and interactive transitions into a structured, modern web experience",
-    image: "/public/imgs/4.png",
+    image: "/public/imgs/3.png",
   },
   {
     title:
       "A PERN-based AI learning platform integrating RAG pipelines and LLM APIs to transform study materials into contextual Q&A, flashcards, and adaptive learning workflows.",
-    image: "/public/imgs/6.png",
+    image: "/public/imgs/4.png",
   },
 ];
 
@@ -233,18 +234,39 @@ const Projects = () => {
 
   return (
     <>
-      <section className="outro h-dvh flex uppercase text-3xl px-[5em] justify-center items-center text- w-full bg-light-black text-very-light ">
-        <span>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-          voluptatem, culpa dolorem veniam nobis odit? At deserunt deleniti
-          quidem sunt quis dolore dolorem necessitatibus, non esse corporis.
-          Ipsa dolorum odit excepturi eos.
-        </span>
+      <section className="outro h-dvh flex uppercase relative items-center text- w-full bg-light-black text-very-light ">
+        <div className="img w-full h-full absolute ">
+          <img
+            className="absolute inset-0 w-full h-full object-cover "
+            src="/public/imgs/3.png"
+            alt=""
+          />
+          <div className="overlay absolute inset-0 h-full w-full bg-black/50" />
+        </div>
+
+        <div className="text_container w-[50%] flex flex-col py-[1em] justify-between h-full relative z-10 px-[3em] ">
+          <div className="texts pt-[18em] ">
+            <span className="text-very-light mb-[1em] text-[.9em] inline-block ">
+              [ 01 - Learnova ]
+            </span>
+            <p className="inline-block text-1xl   ">
+              A motion-driven portfolio designed to combine bold typography,
+              smooth scrolling, and interactive transitions into a structured,
+              modern web experience
+            </p>
+          </div>
+          <a href="https://vimalvdev.vercel.app/" className="preview flex items-center text-[1em] gap-[.5em]  leading-[.9em]">
+            <span className="">[</span>
+            <span className="">preview</span>
+            <MdArrowOutward className="text-[1.3em]" />
+            <span className="">]</span>
+          </a>
+        </div>
       </section>
 
       <section
         ref={containerRef}
-        className="slider relative w-full h-dvh overflow-hidden"
+        className="slider relative w-full h-screen overflow-hidden"
       >
         <div ref={imageWrapRef} className="absolute inset-0 w-full h-full">
           <img className={IMAGE_CLASSES} src={SLIDES[0].image} alt="Slide 1" />
@@ -254,10 +276,10 @@ const Projects = () => {
         <div
           ref={titleWrapRef}
           className="slider_title uppercase absolute top-20 left-0 transform-none w-full p-8 text-very-light md:top-[50%] md:left-8 md:-translate-y-1/2 md:w-[50%] md:p-0"
-        />
+        ></div>
 
         {/* ── Scroll indicators (right side) ───────────────────────────────── */}
-        <div className="slider_indicator absolute right-8 bottom-8 transform-none md:top-[50%] md:right-8 md:-translate-y-1/2 md:bottom-auto">
+        <div className="slider_indicator absolute right-8 bottom-20 transform-none md:top-[50%] md:right-8 md:-translate-y-1/2 md:bottom-auto">
           {/* Index numbers (01, 02…) — built by buildIndicators() */}
           <div ref={indicesWrapRef} className="flex flex-col gap-4 px-5 py-4" />
 
