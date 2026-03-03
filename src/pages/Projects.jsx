@@ -13,22 +13,22 @@ const SLIDES = [
   {
     title:
       "A motion-driven portfolio designed to combine bold typography, smooth scrolling, and interactive transitions into a structured, modern web experience",
-    image: "/public/imgs/portfolio.png",
+    image: "/imgs/portfolio.png",
   },
   {
     title:
       "A PERN-based AI learning platform integrating RAG pipelines and LLM APIs to transform study materials into contextual Q&A, flashcards, and adaptive learning workflows.",
-    image: "/public/imgs/learnova.png",
+    image: "/imgs/learnova.png",
   },
   {
     title:
       "A motion-driven portfolio designed to combine bold typography, smooth scrolling, and interactive transitions into a structured, modern web experience",
-    image: "/public/imgs/3.png",
+    image: "/imgs/3.png",
   },
   {
     title:
       "A PERN-based AI learning platform integrating RAG pipelines and LLM APIs to transform study materials into contextual Q&A, flashcards, and adaptive learning workflows.",
-    image: "/public/imgs/4.png",
+    image: "/imgs/4.png",
   },
 ];
 
