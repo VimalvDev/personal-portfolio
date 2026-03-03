@@ -45,9 +45,9 @@ function Nav() {
   };
 
   return (
-    <nav className="flex justify-between w-full px-[2em] h-[4.5em] max-sm:px-[1em]   items-center z-10  fixed mix-blend-difference text-white ">
+    <nav className="flex justify-between w-full px-[2em] h-[4.5em] max-sm:px-0    items-center z-50  fixed mix-blend-difference text-white ">
       {/* Logo - also clickable (goes to home) */}
-      <div className="nav_logo text-[clamp(0.694rem,1.1vw,1.4rem)] ">
+      <div className="nav_logo text-[clamp(0.694rem,1.1vw,1.4rem)] max-sm:hidden ">
         <div
           onClick={() => handlePageNavigation("/")}
           className="cursor-pointer hover:opacity-80 transition-opacity py-[1em] "

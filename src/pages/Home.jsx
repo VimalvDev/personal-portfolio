@@ -14,25 +14,31 @@ import Footer from "../components/common/Footer";
 import UpText from "../components/animation/UpText";
 
 function Home() {
+  const stickyContainer = useRef(null);
   const clipContainer = useRef(null);
   const clipHeroSec = useRef(null);
   const aboutHeading = useRef(null);
+  const aboutContainer = useRef(null);
   const location = useLocation();
 
   useGSAP(
     () => {
+      // We need aboutContainer height to extend the pin duration
+      const aboutH = aboutContainer.current.offsetHeight;
+      const vh = window.innerHeight;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: clipContainer.current,
           start: "top top",
-          end: "+=300%",
+          end: () => `+=${vh * 3 + aboutH}`,
           scrub: true,
           pin: true,
+          pinSpacing: true,
           refreshPriority: 1,
         },
       });
 
-      // Initializing
       tl.set(clipHeroSec.current, {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       });
@@ -40,21 +46,31 @@ function Home() {
         scale: 1,
         color: "white",
       });
+      tl.set(aboutContainer.current, {
+        yPercent: 0,
+      });
 
-      // Animation
       tl.to(clipHeroSec.current, {
         clipPath: "polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%)",
         duration: 1,
       });
+
       tl.to(aboutHeading.current, {
         scale: 1.5,
         duration: 0.6,
         color: "#4b4852",
       });
+      tl.to(
+        aboutContainer.current,
+        {
+          yPercent: -100,
+          duration: 1,
+        },
+        1,
+      );
     },
-    { scope: clipContainer },
+    { scope: aboutContainer },
   );
-
   useEffect(() => {
     // Extract hash from URL (e.g., "#about" from "/#about")
     const hash = location.hash;
@@ -74,33 +90,98 @@ function Home() {
 
   return (
     <>
-      <div ref={clipContainer} className="hero_container relative">
-        {/* ========== HERO SECTION ========== */}
-        <section ref={clipHeroSec} className="relative z-20 w-full ">
-          <div className="hero_page flex relative overflow-x-hidden pb-[1.5em] pt-[6em] bg-very-light min-h-svh w-full flex-col px-[2em] max-sm:px-[1em] justify-between  ">
-            <HeroHeading />
-            <HeroBottomText />
-          </div>
-        </section>
+      <div ref={stickyContainer} className="relative">
+        <div ref={clipContainer} className="hero_container relative">
+          <section ref={clipHeroSec} className="relative z-20 w-full">
+            <div
+              className="hero_page flex relative overflow-x-hidden pb-[1.5em]
+                      pt-[6em] bg-very-light min-h-svh w-full flex-col
+                      px-[2em] max-sm:px-[1em] justify-between"
+            >
+              <HeroHeading />
+              <HeroBottomText />
+            </div>
+          </section>
 
-        {/* ========== ABOUT HEADING (BEHIND HERO) ========== */}
-        <div className="absolute inset-0 w-full h-screen bg-light-black text-white flex items-center justify-center pointer-events-none">
           <div
-            ref={aboutHeading}
-            className="uppercase text-white flex justify-center flex-col"
+            className="absolute inset-0 w-full h-screen bg-light-black
+                    flex items-center justify-center pointer-events-none z-10"
           >
-            <h2 className="text-[30vw] font-bebas font-bold leading-[0.7em] pt-[0.1em]">
-              about
-            </h2>
+            <div
+              ref={aboutHeading}
+              className="uppercase relative text-white flex justify-center flex-col"
+            >
+              <h2 className="text-[30vw] font-bebas font-bold leading-[0.7em] pt-[0.1em]">
+                about
+              </h2>
+            </div>
           </div>
         </div>
-        
+
+        <section
+          ref={aboutContainer}
+          className="about_container absolute w-full overflow-hidden z-30 
+               text-2xl text-white px-[10em] py-[4em] flex flex-col gap-5"
+          // style={{ marginTop: "-100vh" }}
+        >
+          <h1>My name is vimal</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+            et, corporis repellendus velit voluptatem inventore doloribus
+            dolorum impedit maiores alias architecto, repellat, molestias
+            quisquam odio! Molestias quas officia debitis deserunt!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+            et, corporis repellendus velit voluptatem inventore doloribus
+            dolorum impedit maiores alias architecto, repellat, molestias
+            quisquam odio! Molestias quas officia debitis deserunt!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+            et, corporis repellendus velit voluptatem inventore doloribus
+            dolorum impedit maiores alias architecto, repellat, molestias
+            quisquam odio! Molestias quas officia debitis deserunt!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+            et, corporis repellendus velit voluptatem inventore doloribus
+            dolorum impedit maiores alias architecto, repellat, molestias
+            quisquam odio! Molestias quas officia debitis deserunt!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+            et, corporis repellendus velit voluptatem inventore doloribus
+            dolorum impedit maiores alias architecto, repellat, molestias
+            quisquam odio! Molestias quas officia debitis deserunt!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+            et, corporis repellendus velit voluptatem inventore doloribus
+            dolorum impedit maiores alias architecto, repellat, molestias
+            quisquam odio! Molestias quas officia debitis deserunt!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+            et, corporis repellendus velit voluptatem inventore doloribus
+            dolorum impedit maiores alias architecto, repellat, molestias
+            quisquam odio! Molestias quas officia debitis deserunt!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+            et, corporis repellendus velit voluptatem inventore doloribus
+            dolorum impedit maiores alias architecto, repellat, molestias
+            quisquam odio! Molestias quas officia debitis deserunt!
+          </p>
+
+          {/* ...all your content */}
+        </section>
       </div>
 
-      {/* ========== ABOUT SECTION ========== */}
+      {/* ========== PHILOSPHY SECTION ========== */}
       <section
         id="about"
-        className="relative min-h-svh bg-light-black z-10 text-white overflow-hidden flex items-center justify-center"
+        className="relative min-h-svh z-10 text-white overflow-hidden flex items-center justify-center"
       >
         <div className="philo_container   ">
           <UpText delay={0.1} duration={1} animateOnScroll={true}>

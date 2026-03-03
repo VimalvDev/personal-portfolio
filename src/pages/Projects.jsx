@@ -11,32 +11,37 @@ gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 // ── Slide data lives outside the component so it's never recreated ──────────
 const SLIDES = [
   {
+    label: "01 - Portfolio",
     title:
       "A motion-driven portfolio designed to combine bold typography, smooth scrolling, and interactive transitions into a structured, modern web experience",
     image: "/imgs/portfolio.png",
+    link: "https://vimalvdev.vercel.app/",
   },
   {
+    label: "02 - Learnova",
     title:
       "A PERN-based AI learning platform integrating RAG pipelines and LLM APIs to transform study materials into contextual Q&A, flashcards, and adaptive learning workflows.",
     image: "/imgs/learnova.png",
+    link: "https://learnova.vercel.app/",
   },
   {
+    label: "03 - Project",
     title:
       "A motion-driven portfolio designed to combine bold typography, smooth scrolling, and interactive transitions into a structured, modern web experience",
     image: "/imgs/3.png",
+    link: "#",
   },
   {
+    label: "04 - Project",
     title:
       "A PERN-based AI learning platform integrating RAG pipelines and LLM APIs to transform study materials into contextual Q&A, flashcards, and adaptive learning workflows.",
     image: "/imgs/4.png",
+    link: "#",
   },
 ];
 
-// ── Tailwind classes shared between the static JSX and GSAP-created elements ─
-// Keeping them in one place means a single source of truth — change here,
-// it updates everywhere.
 const TITLE_CLASSES =
-  "desc text-2xl md:text-[3rem] font-mono leading-[.9em] inline-block";
+  "desc text-[clamp(1rem,1vw,1rem)] mb-[10em] font-mono leading-[.9em] inline-block";
 
 const IMAGE_CLASSES =
   "w-full h-full object-cover absolute inset-0 origin-center will-change-auto";
@@ -125,9 +130,31 @@ const Projects = () => {
         // otherwise SplitText leaves orphaned wrapper divs in the DOM.
         if (activeSplit) activeSplit.revert();
 
-        titleWrap.innerHTML = `<h1 class="${TITLE_CLASSES}">${SLIDES[index].title}</h1>`;
+        const slide = SLIDES[index];
+        titleWrap.innerHTML = `
+          <div class="flex flex-col py-[5vw] px-[2em] justify-between h-full">
+          <div class="texts  ">
+          <div class="project_heading">
+            <span class="text-very-light text-[.9em] inline-block">
+              [ ${slide.label} ]
+            </span>
+          </div>
+              <p class="${TITLE_CLASSES}  ">
+                ${slide.title}
+              </p>
+            </div>
+            <div class="preview_link">
+              <a href="${slide.link}" class="preview flex items-center text-[1em] gap-[.5em] leading-[.9em]">
+                <span>[</span>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M5 13c0 .55.45 1 1 1h5v5c0 .55.45 1 1 1s1-.45 1-1v-5h5c.55 0 1-.45 1-1s-.45-1-1-1h-5V7c0-.55-.45-1-1-1s-1 .45-1 1v5H6c-.55 0-1 .45-1 1z"/></svg>
+                <span>preview</span>
+                <span>]</span>
+              </a>
+            </div>
+          </div>
+        `;
 
-        activeSplit = new SplitText(titleWrap.querySelector("h1"), {
+        activeSplit = new SplitText(titleWrap.querySelector("p"), {
           type: "lines",
           linesClass: "relative block will-change-transform",
           mask: "lines", // clips overflow so lines slide up from behind
@@ -234,35 +261,6 @@ const Projects = () => {
 
   return (
     <>
-      <section className="outro h-dvh flex uppercase relative items-center text- w-full bg-light-black text-very-light ">
-        <div className="img w-full h-full absolute ">
-          <img
-            className="absolute inset-0 w-full h-full object-cover "
-            src="/public/imgs/4.png"
-            alt=""
-          />
-          <div className="overlay absolute inset-0 h-full w-full bg-black/50" />
-        </div>
-
-        <div className="text_container w-[50%] flex flex-col py-[1em] justify-between h-full relative z-10 px-[3em] ">
-          <div className="texts pt-[18em] ">
-            <span className="text-very-light mb-[1em] text-[.9em] inline-block ">
-              [ 01 - Learnova ]
-            </span>
-            <p className="inline-block text-1xl   ">
-              A motion-driven portfolio designed to combine bold typography,
-              smooth scrolling, and interactive transitions into a structured,
-              modern web experience
-            </p>
-          </div>
-          <a href="https://vimalvdev.vercel.app/" className="preview flex items-center text-[1em] gap-[.5em]  leading-[.9em]">
-            <span className="">[</span>
-            <span className="">preview</span>
-            <MdArrowOutward className="text-[1.3em]" />
-            <span className="">]</span>
-          </a>
-        </div>
-      </section>
 
       <section
         ref={containerRef}
@@ -275,7 +273,7 @@ const Projects = () => {
 
         <div
           ref={titleWrapRef}
-          className="slider_title uppercase absolute top-20 left-0 transform-none w-full p-8 text-very-light md:top-[50%] md:left-8 md:-translate-y-1/2 md:w-[50%] md:p-0"
+          className="slider_title uppercase relative w-full h-full  text-very-light md:top-[50%] md:-translate-y-1/2 md:w-[50%]"
         ></div>
 
         {/* ── Scroll indicators (right side) ───────────────────────────────── */}
@@ -293,14 +291,6 @@ const Projects = () => {
         </div>
 
         {/* ── Outro section ─────────────────────────────────────────────────── */}
-      </section>
-      <section className="outro h-screen flex uppercase text-3xl px-[5em] justify-center items-center text- w-full bg-light-black text-very-light ">
-        <span>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-          voluptatem, culpa dolorem veniam nobis odit? At deserunt deleniti
-          quidem sunt quis dolore dolorem necessitatibus, non esse corporis.
-          Ipsa dolorum odit excepturi eos.
-        </span>
       </section>
     </>
   );
