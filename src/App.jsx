@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import Nav from "./components/common/Nav";
 import Routing from "./routes/Routing";
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
+
 import ReactLenis from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -38,6 +40,7 @@ function App() {
         <Nav />
         <Routing />
         <SpeedInsights />
+        <Analytics/>
       </ReactLenis>
     </PageTransitionProvider>
   );

@@ -238,7 +238,7 @@ const Projects = () => {
         <div className="img w-full h-full absolute ">
           <img
             className="absolute inset-0 w-full h-full object-cover "
-            src="/public/imgs/3.png"
+            src="/public/imgs/4.png"
             alt=""
           />
           <div className="overlay absolute inset-0 h-full w-full bg-black/50" />
