@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Nav from "./components/common/Nav";
 import Routing from "./routes/Routing";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import ReactLenis from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
