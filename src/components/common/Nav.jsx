@@ -59,24 +59,7 @@ function Nav() {
       {/* Navigation Links */}
       <div className="nav_link ">
         <ul className="uppercase text-[clamp(0.694rem,1vw,1.3rem)] flex gap-[1em] ">
-          {/* HOME: Page navigation - goes to home page */}
-          <li>
-            <div
-              className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
-              onClick={() => handlePageNavigation("/")}
-            >
-              <span>[</span>
-              <DecryptedText
-                text="home"
-                speed={120}
-                maxIterations={5}
-                animateOn="hover"
-                revealDirection="center"
-                useOriginalCharsOnly
-              ></DecryptedText>
-              <span>]</span>
-            </div>
-          </li>
+  
 
           {/* ABOUT: Hash navigation - scrolls to #about on home page */}
           <li>

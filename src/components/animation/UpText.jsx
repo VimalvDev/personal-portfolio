@@ -6,7 +6,13 @@ import React, { useRef } from "react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-const UpText = ({ children, animateOnScroll = true, delay = 0, duration, yPos=110 }) => {
+const UpText = ({
+  children,
+  animateOnScroll = true,
+  delay = 0,
+  duration,
+  splitType = "lines",
+}) => {
   const containerRef = useRef(null);
   const elementRef = useRef([]);
   const splitRef = useRef([]);
@@ -31,17 +37,38 @@ const UpText = ({ children, animateOnScroll = true, delay = 0, duration, yPos=11
         elements.forEach((element) => {
           elementRef.current.push(element);
 
-          const split = SplitText.create(element, {
-            type: "lines",
-            mask: "lines",
-            linesClass: "line++",
-          });
+          // ✅ Check if element has actual text content
+          const hasText =
+            element.textContent?.trim().length > 0 &&
+            !(element instanceof SVGElement) &&
+            !element.querySelector("svg");
 
-          splitRef.current.push(split);
-          lines.current.push(...split.lines);
+          if (hasText) {
+            const split = SplitText.create(element, {
+              type: splitType,
+              mask: splitType,
+              ...(splitType === "chars" && { charsClass: "char++" }),
+              ...(splitType === "words" && { wordsClass: "word++" }),
+              ...(splitType === "lines" && { linesClass: "line++" }),
+            });
+            splitRef.current.push(split);
+            const splitItems =
+              splitType === "chars"
+                ? split.chars
+                : splitType === "words"
+                  ? split.words
+                  : split.lines;
+            lines.current.push(...splitItems);
+          } else {
+            // ✅ No text (SVG/icon) — animate the element directly
+            lines.current.push(element);
+            // Wrap in overflow:hidden so the slide-up is masked
+            element.style.overflow = "hidden";
+            element.style.display = "inline-flex";
+          }
         });
 
-        gsap.set(lines.current, { yPercent: yPos });
+        gsap.set(lines.current, { yPercent: 100 });
 
         const animationProps = {
           yPercent: 0,
@@ -65,7 +92,6 @@ const UpText = ({ children, animateOnScroll = true, delay = 0, duration, yPos=11
         }
       };
 
-      // 🔥 WAIT FOR FONTS
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(init);
       } else {

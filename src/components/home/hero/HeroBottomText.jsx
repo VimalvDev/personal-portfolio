@@ -28,7 +28,7 @@ function HeroBottomText() {
       <div className="hero_bottom_text w-[70%] h-full overflow-x-hidden text-right max-sm:w-full">
         <div className="hero_bottom_text_container inline-block pl-[20em] max-sm:pl-0 max-sm:w-[65vw] max-sm:mb-[em]  ">
           <div className="top uppercase text-dark-gray text-[clamp(.8rem,1vw,1rem)] inline-block leading-[1.1em] max-sm:mb-[1em] mt-[1em]  cursor-target">
-            <UpText delay={0.9} duration={1} animateOnScroll={false}>
+            <UpText delay={0.9} duration={1} animateOnScroll={false} >
               <div className="flex flex-wrap justify-end text-right">
                 <DecryptedText
                   text="crafting "
