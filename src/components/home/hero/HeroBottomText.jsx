@@ -13,22 +13,39 @@ function HeroBottomText() {
   return (
     <div className="hero_bottom w-full flex relative items-end ">
       <div className="hero_clock text-dark-gray text-[clamp(0.694rem,1vw,1.1rem)] leading-[.9em] bottom-[.5em] absolute ">
-        {`INDIA ${time ? time : "00:00"}`}
-        <span className="time_zone hidden sm:inline ">(GMT+5:30)</span>
+        <UpText
+          delay={0.4}
+          duration={0.6}
+          animateOnScroll={false}
+          splitType="words"
+          staggerFrom="random"
+        >
+          <span>
+            {`INDIA ${time ? time : "00:00"}`}
+            </span>
+          <span className="time_zone hidden sm:inline ">(GMT+5:30)</span>
+        </UpText>
       </div>
 
-      <div
-        className="hero_scroller max-sm:hidden uppercase w-[60%]"
-      >
+      <div className="hero_scroller max-sm:hidden uppercase w-[60%]">
         <div className="flex justify-end items-start  text-gray text-[clamp(0.694rem,1vw,1rem)]">
+                  <UpText
+          delay={0.4}
+          duration={1}
+          animateOnScroll={false}
+          splitType="lines"
+
+        >
+
           <span>[scroll to explore]</span>
+        </UpText>
         </div>
       </div>
 
       <div className="hero_bottom_text w-[70%] h-full overflow-x-hidden text-right max-sm:w-full">
         <div className="hero_bottom_text_container inline-block pl-[20em] max-sm:pl-0 max-sm:w-[65vw] max-sm:mb-[em]  ">
           <div className="top uppercase text-dark-gray text-[clamp(.8rem,1vw,1rem)] inline-block leading-[1.1em] max-sm:mb-[1em] mt-[1em]  cursor-target">
-            <UpText delay={0.9} duration={1} animateOnScroll={false} >
+            <UpText delay={0.9} duration={1} animateOnScroll={false}>
               <div className="flex flex-wrap justify-end text-right">
                 <DecryptedText
                   text="crafting "

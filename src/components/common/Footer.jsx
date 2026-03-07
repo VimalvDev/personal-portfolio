@@ -7,6 +7,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-very-light min-h-[70vh] flex justify-end p-[1em]  md:py-[1.5em] md:px-[2em] flex-col border ">
+      
       <div className="footer_nav_link w-full h-full uppercase ">
         <ul className="text-[clamp(0.694rem,1vw,1rem)] flex justify-between" > 
           <li><a href="/home#about">[ about me ]</a></li>
@@ -15,7 +16,7 @@ const Footer = () => {
         </ul>
       </div>
       <div className="footer_name  w-full ">
-        <UpText duration={1} splitType="chars" >
+        <UpText duration={1} splitType="chars" delay={.5} staggerFrom="random" >
 
         <h1 className="leading-[.83] md:text-[clamp(1rem,23vw,23rem)] text-[clamp(1rem,22vw,25rem)]   uppercase text-center w-full whitespace-nowrap  pt-[.1em]" >vimal verma</h1>
         </UpText>

@@ -6,12 +6,14 @@ import React, { useRef } from "react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
+
 const UpText = ({
   children,
   animateOnScroll = true,
   delay = 0,
   duration,
   splitType = "lines",
+  staggerFrom = "start",
 }) => {
   const containerRef = useRef(null);
   const elementRef = useRef([]);
@@ -68,13 +70,17 @@ const UpText = ({
           }
         });
 
-        gsap.set(lines.current, { yPercent: 100 });
+        gsap.set(lines.current, { yPercent: 110 });
 
+        const easeAnim = splitType === "chars" ? "back.out(.7)" : "power4.out"
         const animationProps = {
           yPercent: 0,
           duration: duration,
-          stagger: 0.1,
-          ease: "power4.out",
+          stagger: {
+            amount: 0.4,
+            from: staggerFrom,
+          },
+          ease: easeAnim,
           delay: delay,
         };
 
@@ -85,6 +91,7 @@ const UpText = ({
               trigger: containerRef.current,
               start: "top 75%",
               once: true,
+              fastScrollEnd: true,
             },
           });
         } else {

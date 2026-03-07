@@ -3,6 +3,7 @@ import { MdArrowOutward } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import { usePageTransition } from "../../hooks/usePageTransition";
 import DecryptedText from "../animation/motion/DecryptedText";
+import UpText from "../animation/UpText";
 
 function Nav() {
   const navigateWithTransition = usePageTransition();
@@ -59,24 +60,32 @@ function Nav() {
       {/* Navigation Links */}
       <div className="nav_link ">
         <ul className="uppercase text-[clamp(0.694rem,1vw,1.3rem)] flex gap-[1em] ">
-  
-
           {/* ABOUT: Hash navigation - scrolls to #about on home page */}
           <li>
             <div
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
               onClick={() => handleHashNavigation("#about")}
             >
-              <span>[</span>
-              <DecryptedText
-                text="about me"
-                speed={120}
-                maxIterations={5}
-                animateOn="hover"
-                revealDirection="center"
-                useOriginalCharsOnly
-              ></DecryptedText>
-              <span>]</span>
+              <UpText
+                delay={0.4}
+                duration={0.6}
+                animateOnScroll={false}
+                splitType="chars"
+                staggerFrom="random"
+              >
+                <span>
+                  <span>[</span>
+                  <DecryptedText
+                    text="about me"
+                    speed={120}
+                    maxIterations={5}
+                    animateOn="hover"
+                    revealDirection="center"
+                    useOriginalCharsOnly
+                  ></DecryptedText>
+                  <span>]</span>
+                </span>
+              </UpText>
             </div>
           </li>
 
@@ -86,16 +95,26 @@ function Nav() {
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
               onClick={() => handlePageNavigation("/projects")}
             >
-              <span>[</span>
-              <DecryptedText
-                text="projects"
-                speed={120}
-                maxIterations={5}
-                animateOn="hover"
-                revealDirection="center"
-                useOriginalCharsOnly
-              ></DecryptedText>
-              <span>]</span>
+              <UpText
+                delay={0.6}
+                duration={0.6}
+                animateOnScroll={false}
+                splitType="chars"
+                staggerFrom="random"
+              >
+                <span>
+                  <span>[</span>
+                  <DecryptedText
+                    text="projects"
+                    speed={120}
+                    maxIterations={5}
+                    animateOn="hover"
+                    revealDirection="center"
+                    useOriginalCharsOnly
+                  ></DecryptedText>
+                  <span>]</span>
+                </span>
+              </UpText>
             </div>
           </li>
 
@@ -105,16 +124,26 @@ function Nav() {
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
               onClick={() => handleHashNavigation("#skills")}
             >
-              <span>[</span>
-              <DecryptedText
-                text="skills"
-                speed={120}
-                maxIterations={5}
-                animateOn="hover"
-                revealDirection="center"
-                useOriginalCharsOnly
-              ></DecryptedText>
-              <span>]</span>
+              <UpText
+                delay={0.8}
+                duration={0.6}
+                animateOnScroll={false}
+                splitType="chars"
+                staggerFrom="random"
+              >
+                <span>
+                  <span>[</span>
+                  <DecryptedText
+                    text="skills"
+                    speed={120}
+                    maxIterations={5}
+                    animateOn="hover"
+                    revealDirection="center"
+                    useOriginalCharsOnly
+                  ></DecryptedText>
+                  <span>]</span>
+                </span>
+              </UpText>
             </div>
           </li>
 
@@ -124,16 +153,26 @@ function Nav() {
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
               onClick={() => handleHashNavigation("#connect")}
             >
-              <span>[</span>
-              <DecryptedText
-                text="connect"
-                speed={120}
-                maxIterations={5}
-                animateOn="hover"
-                revealDirection="center"
-                useOriginalCharsOnly
-              ></DecryptedText>
-              <span>]</span>
+              <UpText
+                delay={1}
+                duration={0.6}
+                animateOnScroll={false}
+                splitType="chars"
+                staggerFrom="random"
+              >
+                <span>
+                  <span>[</span>
+                  <DecryptedText
+                    text="connect"
+                    speed={120}
+                    maxIterations={5}
+                    animateOn="hover"
+                    revealDirection="center"
+                    useOriginalCharsOnly
+                  ></DecryptedText>
+                  <span>]</span>
+                </span>
+              </UpText>
             </div>
           </li>
         </ul>

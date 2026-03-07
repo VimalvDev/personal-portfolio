@@ -191,9 +191,12 @@ function Home() {
             <div className="about_heading self-center w-full leading-[.9em] overflow-hidden  ">
               <div className="project_number absolute left-[5%]  ">
                 <UpText delay={0.4} duration={1} animateOnScroll={false}>
+                                    <UpText delay={0.5} duration={1} splitType="lines"  >
+
                   <span className="uppercase text-[clamp(.694rem,1vw,1rem)] leading-tight text-gray ">
                     [ 02 - about me ]
                   </span>
+                  </UpText>
                 </UpText>
               </div>
 
@@ -292,7 +295,7 @@ function Home() {
                     technical structure.
                   </p>
                 </UpText>{" "}
-                <UpText duration={1}>
+                <UpText delay={0.5} duration={1}>
                   <p className=" mb-[.5em] ">
                     I enjoy building products that start from a design idea and
                     gradually evolve into functional systems. My goal is to
@@ -305,7 +308,7 @@ function Home() {
             <div className="about_para4 hidden md:block  md:w-[65%] w-full self-end  cursor-target m:p-[.5em]  ">
               <div className="about_para_heading  leading-[.9em] text-dark-light overflow-hidden mb-[1em] ">
                 <h2 className="leading-[.9em] flex items-center gap-[1em] text-left text-[clamp(0.9rem,2vw,2rem)]  tracking-tight    ">
-                  <UpText delay={0.2} duration={1}>
+                  <UpText delay={0.2} duration={1} splitType="chars"  >
                     <span>my approach</span>
                   </UpText>
                   <UpText delay={0.4} duration={1}>
