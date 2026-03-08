@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { stagger } from "motion";
 import React, { useRef } from "react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
@@ -14,6 +15,7 @@ const UpText = ({
   duration,
   splitType = "lines",
   staggerFrom = "start",
+  disableOnMobile = false,
 }) => {
   const containerRef = useRef(null);
   const elementRef = useRef([]);
@@ -25,6 +27,8 @@ const UpText = ({
       if (!containerRef.current) return;
 
       const init = () => {
+          if (disableOnMobile && window.innerWidth < 768) return; // ← add this, rest unchanged
+
         splitRef.current = [];
         elementRef.current = [];
         lines.current = [];
@@ -111,7 +115,7 @@ const UpText = ({
     },
     {
       scope: containerRef,
-      dependencies: [animateOnScroll, delay, duration],
+dependencies: [animateOnScroll, delay, duration, splitType, staggerFrom, disableOnMobile],
     },
   );
   if (React.Children.count(children) === 1) {

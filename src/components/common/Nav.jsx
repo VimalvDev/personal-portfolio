@@ -66,12 +66,12 @@ function Nav() {
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
               onClick={() => handleHashNavigation("#about")}
             >
-              <UpText
+              <UpText disableOnMobile
                 delay={0.4}
                 duration={0.6}
                 animateOnScroll={false}
                 splitType="chars"
-                staggerFrom="random"
+                staggerFrom="lines"
               >
                 <span>
                   <span>[</span>
@@ -95,12 +95,12 @@ function Nav() {
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
               onClick={() => handlePageNavigation("/projects")}
             >
-              <UpText
+              <UpText disableOnMobile
                 delay={0.6}
                 duration={0.6}
                 animateOnScroll={false}
                 splitType="chars"
-                staggerFrom="random"
+                staggerFrom="lines"
               >
                 <span>
                   <span>[</span>
@@ -124,12 +124,12 @@ function Nav() {
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
               onClick={() => handleHashNavigation("#skills")}
             >
-              <UpText
+              <UpText disableOnMobile
                 delay={0.8}
                 duration={0.6}
                 animateOnScroll={false}
                 splitType="chars"
-                staggerFrom="random"
+                staggerFrom="lines"
               >
                 <span>
                   <span>[</span>
@@ -153,12 +153,12 @@ function Nav() {
               className="py-[1.5em] cursor-pointer hover:opacity-80 transition-opacity uppercase"
               onClick={() => handleHashNavigation("#connect")}
             >
-              <UpText
+              <UpText disableOnMobile
                 delay={1}
                 duration={0.6}
                 animateOnScroll={false}
                 splitType="chars"
-                staggerFrom="random"
+                staggerFrom="lines"
               >
                 <span>
                   <span>[</span>

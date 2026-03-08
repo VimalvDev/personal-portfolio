@@ -5,7 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { BP } from "../../../utils/BreakPoints";
 import UpText from "../../animation/UpText";
-import { h1 } from "motion/react-client";
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 const projectsData = [
@@ -67,7 +68,7 @@ function ProjectsOverview() {
             end: "+=300%",
             scrub: true,
             pin: true,
-            refreshPriority: 0, // Pin this has higher priority than hero (default 0)
+            refreshPriority: 2, // Pin this has higher priority than hero (default 0)
           },
         });
 
@@ -112,11 +113,7 @@ function ProjectsOverview() {
           ease: "none",
           duration: 0.6,
         });
-        tl.to(projectsContainer.current, {
-          yPercent: -27,
-
-          duration: 0.6,
-        });
+   
       });
     },
     { scope: wrapperRef },
@@ -125,13 +122,11 @@ function ProjectsOverview() {
   return (
     <section
       ref={headingSecRef}
-      className="headingSection  bg-very-light overflow-hidden "
+      className="headingSection  bg-light-black text-white overflow-hidden "
     >
-      <div
-        className="md:min-h-screen min-h-[20svh] pt-[4em] w-full overflow-hidden md:pt-[6em]"
-      >
+      <div className="md:min-h-screen min-h-[20svh] pt-[4em] w-full overflow-hidden md:pt-[6em]">
         <div className="small_project_heading md:hidden w-full  h-full ">
-          <UpText duration={1}>
+          <UpText duration={1} delay={0.5} splitType="chars">
             <h1 className=" text-[32vw] text-center leading-[0.83]">
               projects
             </h1>
@@ -175,7 +170,7 @@ function ProjectsOverview() {
         ref={projectsContainer}
         className="project_container  h-full w-full flex-col md:px-[2em] px-[1em]    "
       >
-        <div className="page_project_number flex md:mb-[3em] mb-[1.em]  justify-between items-center ">
+        <div className="page_project_number flex  justify-between items-center ">
           <UpText delay={1} duration={1}>
             <span className="uppercase text-mid-gray text-[clamp(.694rem,1vw,1rem)]  ">
               [ 03 - selected projects ]
@@ -191,11 +186,8 @@ function ProjectsOverview() {
             </a>
           </div>
         </div>
-
-        {projectsData.map((projects, index) => {
-          return <h1>{projects.heading1}</h1>;
-        })}
       </div>
+
     </section>
   );
 }

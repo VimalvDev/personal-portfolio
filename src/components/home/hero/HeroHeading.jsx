@@ -7,7 +7,7 @@ function HeroHeading() {
   return (
     <div className="hero_top relative h-full w-full uppercase flex flex-col    ">
       <div className="project_number  ">
-          <UpText delay={0.4} duration={.6} animateOnScroll={false} splitType="chars" staggerFrom="edges" >
+          <UpText delay={0.4} duration={1} animateOnScroll={false} disableOnMobile splitType="lines" >
           <span className="uppercase text-[clamp(.694rem,1vw,1rem)] leading-tight text-mid-gray ">
             [ 01 - home ]
           </span>
@@ -17,15 +17,15 @@ function HeroHeading() {
       <div className="hero_text_bottom  text-light-black font-bebas ">
         <div className="hero_text-heading  text-start ">
           <UpText delay={0.4} duration={1} animateOnScroll={false} splitType="chars" >
-            <h1 className=" cursor-target md:text-[clamp(10rem,21vw,21rem)] text-[26vw] leading-[.86em] -mb-[1em] inline-block  ">
+            <h1 className="  md:text-[clamp(10rem,21vw,21rem)] text-[26vw] leading-[.86em] -mb-[1em] inline-block  ">
               creative
             </h1>
           </UpText>
         </div>
 
         <div className="hero_text-heading text-end overflow-hidden  ">
-          <UpText delay={0.4} duration={1} animateOnScroll={false} splitType="chars" staggerFrom="end" >
-            <h1 className=" cursor-target md:text-[clamp(10rem,21vw,21rem)] text-[26vw] leading-[.86em] -mb-[1em]  inline-block  ">
+          <UpText delay={0.4} duration={1} animateOnScroll={false} splitType="chars" staggerFrom="end"  >
+            <h1 className="  md:text-[clamp(10rem,21vw,21rem)] text-[26vw] leading-[.86em] -mb-[1em]  inline-block  ">
               developer
               </h1>
           </UpText>
@@ -35,7 +35,7 @@ function HeroHeading() {
 
       <div className="skills flex flex-col text-dark-gray max-sm:mt-[2em]   ">
         {skillData.map((skill, index) => (
-          <UpText key={index} delay={0.4} duration={.6} animateOnScroll={false} splitType="chars" staggerFrom="random" >
+          <UpText key={index} delay={0.4 + index * .3} duration={1} animateOnScroll={false} splitType="lines" disableOnMobile={false} >
             <h2 className="font-normal inline-block font-bebas   leading-[.89] pt-[.1em] text-[clamp(1.728rem,3vw,3rem)] relative ">
               <span>[ {skill} ]</span>
             </h2>

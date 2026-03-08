@@ -10,6 +10,7 @@ import HeroBottomText from "../components/home/hero/HeroBottomText";
 import { BP } from "../utils/BreakPoints";
 
 import ProjectsOverview from "../components/home/projects-overview/ProjectsOverview";
+import Projects from '../pages/Projects'
 import Footer from "../components/common/Footer";
 
 import UpText from "../components/animation/UpText";
@@ -29,6 +30,7 @@ function Home() {
       const mm = gsap.matchMedia();
 
       mm.add(BP.desktop, () => {
+        
         const aboutH = aboutContainer.current.offsetHeight;
         const vh = window.innerHeight;
 
@@ -40,7 +42,7 @@ function Home() {
             scrub: true,
             pin: true,
             pinSpacing: true,
-            refreshPriority: 1,
+            refreshPriority: 3,
           },
         });
 
@@ -71,17 +73,7 @@ function Home() {
           duration: 0.2,
           opacity: 0.1,
         });
-        ScrollTrigger.create({
-          trigger: aboutContainer.current,
-          start: "bottom bottom",
-          end: "bottom top",
-          scrub: true,
-          onEnter: () => {
-            gsap.to("body", {
-              opacity: 0,
-            });
-          },
-        });
+        
       });
       mm.add(BP.mobile, () => {
         const vh = window.innerHeight;
@@ -94,6 +86,8 @@ function Home() {
             scrub: true,
             pin: true,
             pinSpacing: true,
+                        refreshPriority: 3,
+
           },
         });
 
@@ -103,6 +97,7 @@ function Home() {
         tl.set(aboutHeading.current, {
           scale: 1,
           opacity: 1,
+          xPercent: 0,
         });
 
         tl.to(clipHeroSec.current, {
@@ -116,6 +111,9 @@ function Home() {
           opacity: 0.1,
         });
       });
+
+    // project section: starts black, turns white when about section ends
+    
     },
     { scope: stickyContainer },
   );
@@ -141,7 +139,7 @@ function Home() {
       <div ref={stickyContainer} className="relative">
         <div
           ref={clipContainer}
-          className="hero_container h-[50vh] md:h-0 relative"
+          className="hero_container h-[50vh] md:h-0 w-full relative"
         >
           <section ref={clipHeroSec} className="relative z-20 w-full">
             <div
@@ -155,12 +153,12 @@ function Home() {
           </section>
 
           <div
-            className="absolute inset-0 w-full  min-h-screen  bg-light-black
+            className="absolute overflow-hidden inset-0 w-full  min-h-screen  bg-light-black
                     flex items-center justify-center pointer-events-none z-10"
           >
             <div
               ref={aboutHeading}
-              className="uppercase relative text-white flex justify-center flex-col"
+              className="uppercase relative text-very-light flex justify-center flex-col"
             >
               <h2 className="text-[40vw] font-bebas  leading-[0.7em] pt-[0.1em]">
                 about
@@ -174,37 +172,32 @@ function Home() {
           className="about_container h-full w-full 
                text-very-light "
         >
-          {/* <div
-            ref={imgRef}
-            className="img_container w-[40vw] h-[50vw] absolute top-0 z-5 "
-          >
-            <img
-              src="/public/imgs/me.png"
-              className="object-cover w-full object-center h-full"
-              alt=""
-            />
-          </div> */}
           <div
             ref={aboutText}
-            className="about_text relative flex flex-col px-[1.5em] md:px-[15em] py-[5em] uppercase gap-[2em] md:gap-[4em]  "
+            className="about_text relative flex flex-col px-[1.5em] md:px-[15em] pt-[5em] pb-[13em] uppercase gap-[2em] md:gap-[4em]  "
           >
-            <div className="about_heading self-center w-full leading-[.9em] overflow-hidden  ">
+    
+            <div className="about_heading self-center w-full leading-[.9em] overflow-hidden   ">
               <div className="project_number absolute left-[5%]  ">
                 <UpText delay={0.4} duration={1} animateOnScroll={false}>
-                                    <UpText delay={0.5} duration={1} splitType="lines"  >
-
-                  <span className="uppercase text-[clamp(.694rem,1vw,1rem)] leading-tight text-gray ">
-                    [ 02 - about me ]
-                  </span>
+                  <UpText
+                    delay={0.5}
+                    duration={1}
+                    splitType="lines"
+                    disableOnMobile
+                  >
+                    <span className="uppercase text-[clamp(.694rem,1vw,1rem)] leading-tight text-gray ">
+                      [ 02 - about me ]
+                    </span>
                   </UpText>
                 </UpText>
               </div>
 
-              <h2 className="leading-[.9em] text-right md:text-center w-full text-[clamp(1rem,2vw,2rem)]  tracking-tight flex-col flex flex-col   ">
-                <UpText duration={0.5} splitType="chars" >
+              <h2 className="leading-[.9em] text-right md:text-center w-full text-[clamp(1rem,2vw,2rem)]  tracking-tight flex-col flex    ">
+                <UpText duration={0.5} splitType="chars">
                   <span>hello!</span>
                 </UpText>
-                <UpText delay={0.3} duration={0.5} splitType="chars" >
+                <UpText delay={0.3} duration={0.5} splitType="chars">
                   <span>i'm vimal verma</span>
                 </UpText>
               </h2>
@@ -213,10 +206,10 @@ function Home() {
             <div className="about_para1 md:w-[65%] w-full self-start  cursor-target m:p-[.5em] ">
               <div className="about_para_heading  leading-[.9em] text-dark-light overflow-hidden mb-[1em] ">
                 <h2 className="leading-[.9em] flex items-center gap-[1em] text-left text-[clamp(0.9rem,2vw,2rem)] tracking-tight">
-                  <UpText delay={0.5} duration={1} splitType="chars"  >
+                  <UpText delay={0.5} duration={1} splitType="chars">
                     <span>intro</span>
                   </UpText>
-                  <UpText delay={0.8} duration={1}  >
+                  <UpText delay={0.8} duration={1}>
                     <FiArrowDownRight className="text-[1.1em]" />
                   </UpText>
                 </h2>
@@ -245,7 +238,7 @@ function Home() {
             <div className="about_para2 md:w-[65%] w-full self-end  cursor-target m:p-[.5em]  ">
               <div className="about_para_heading  leading-[.9em] text-dark-light overflow-hidden mb-[1em] ">
                 <h2 className="leading-[.9em] flex items-center gap-[1em] text-left text-[clamp(0.9rem,2vw,2rem)] tracking-tight">
-                  <UpText delay={0.5} duration={1} splitType="chars"  >
+                  <UpText delay={0.5} duration={1} splitType="chars">
                     <span>my journey</span>
                   </UpText>
                   <UpText delay={0.7} duration={1}>
@@ -255,7 +248,7 @@ function Home() {
               </div>
 
               <div className="about_text text-[clamp(0.694rem,1vw,1rem)] ">
-                <UpText delay={0.7} duration={1}  >
+                <UpText delay={0.7} duration={1}>
                   <p className=" mb-[.5em] ">
                     My interest in development started with curiosity about how
                     digital experiences are built. Over time that curiosity
@@ -277,7 +270,7 @@ function Home() {
             <div className="about_para3 md:w-[65%] w-full self-start  cursor-target m:p-[.5em]  ">
               <div className="about_para_heading  leading-[.9em] text-dark-light overflow-hidden mb-[1em] ">
                 <h2 className="leading-[.9em] flex items-center gap-[1em] text-left text-[clamp(0.9rem,2vw,2rem)]  tracking-tight    ">
-                  <UpText delay={0.5} duration={1} splitType="chars"  >
+                  <UpText delay={0.5} duration={1} splitType="chars">
                     <span>what i build</span>
                   </UpText>
                   <UpText delay={0.7} duration={1}>
@@ -308,7 +301,7 @@ function Home() {
             <div className="about_para4 hidden md:block  md:w-[65%] w-full self-end  cursor-target m:p-[.5em]  ">
               <div className="about_para_heading  leading-[.9em] text-dark-light overflow-hidden mb-[1em] ">
                 <h2 className="leading-[.9em] flex items-center gap-[1em] text-left text-[clamp(0.9rem,2vw,2rem)]  tracking-tight    ">
-                  <UpText delay={0.2} duration={1} splitType="chars"  >
+                  <UpText delay={0.2} duration={1} splitType="chars">
                     <span>my approach</span>
                   </UpText>
                   <UpText delay={0.4} duration={1}>
@@ -342,6 +335,8 @@ function Home() {
 
       {/* ========== PROJECT SECTION ========== */}
       <ProjectsOverview />
+      <Projects/>
+
 
       {/* ========== SKILLS SECTION ========== */}
       <section
