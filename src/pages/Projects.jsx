@@ -12,28 +12,28 @@ const SLIDES = [
     label: "01 - Portfolio",
     title:
       "A motion-driven portfolio designed to combine bold typography, smooth scrolling, and interactive transitions into a structured, modern web experience",
-    image: "/public/imgs/bg/1.jpg",
+    image: " /imgs/bg/1.jpg",
     link: "https://vimalvdev.vercel.app/",
   },
   {
     label: "02 - Learnova",
     title:
       "A PERN-based AI learning platform integrating RAG pipelines and LLM APIs to transform study materials into contextual Q&A, flashcards, and adaptive learning workflows.",
-    image: "/public/imgs/bg/4.jpg",
+    image: " /imgs/bg/4.jpg",
     link: "https://learnova.vercel.app/",
   },
   {
     label: "03 - Project",
     title:
       "A motion-driven portfolio designed to combine bold typography, smooth scrolling, and interactive transitions into a structured, modern web experience",
-    image: "/public/imgs/bg/5.jpg",
+    image: " /imgs/bg/5.jpg",
     link: "#",
   },
   {
     label: "04 - Project",
     title:
       "A PERN-based AI learning platform integrating RAG pipelines and LLM APIs to transform study materials into contextual Q&A, flashcards, and adaptive learning workflows.",
-    image: "/public/imgs/bg/12.jpg",
+    image: " /imgs/bg/12.jpg",
     link: "#",
   },
 ];
