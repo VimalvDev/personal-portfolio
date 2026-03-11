@@ -174,7 +174,7 @@ const Projects = () => {
           scrub: true,          // same as Home — no numeric scrub lag
           pin: true,
           pinSpacing: true,
-                      refreshPriority: 1,
+          refreshPriority: 1,
 
 
           onUpdate: (self) => {
@@ -224,16 +224,16 @@ const Projects = () => {
 
       <div className="slider_title uppercase relative w-full h-full z-20 text-very-light md:top-[50%] pt-[3em] md:pt-0 md:-translate-y-1/2 md:w-[50%]">
         <div className="flex flex-col py-[5vw] px-[2em] justify-between h-full">
-          <div className="numbering">
-            <h1 className="text-[10vw] text-bebas " >01</h1>
-          </div>
-          <div className="texts overflow-hidden">
+          {/* <div className="numbering">
+            <h1 className="text-[clamp(2rem,5vw,5rem)] text-bebas " >01</h1>
+          </div> */}
+          <div className="texts mb-[10em] overflow-hidden">
             <div className="project_heading">
               <span ref={labelRef} className="text-very-light text-[.9em] inline-block" />
             </div>
             <p
               ref={descRef}
-              className="desc text-[clamp(1rem,1vw,1rem)] mb-[10em] font-mono leading-[.9em] inline-block"
+              className="desc text-[clamp(1rem,1vw,1rem)] leading-tight  inline-block"
             />
           </div>
           <div className="preview_link">

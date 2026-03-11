@@ -1,15 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import Nav from "./components/common/Nav";
 import Routing from "./routes/Routing";
-import { SpeedInsights } from "@vercel/speed-insights/react"
-import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 import ReactLenis from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PageTransitionProvider } from "./context/PageTransitionContext";
 import PageTransition from "./components/common/PageTransition";
-import TargetCursor from "../src/components/animation/TargetCursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,20 +26,19 @@ function App() {
 
   return (
     <PageTransitionProvider>
-      <ReactLenis root options={{ autoRaf: true }} ref={lenisRef}>
-        <TargetCursor
-          spinDuration={10}
-          hideDefaultCursor
-          parallaxOn
-          hoverDuration={0.2}
-        />
-
+      <ReactLenis
+        root
+        options={{
+          autoRaf: true,
+        }}
+        ref={lenisRef}
+      >
         <PageTransition />
 
-        <Nav />
+        <Nav  />
         <Routing />
         <SpeedInsights />
-        <Analytics/>
+        <Analytics />
       </ReactLenis>
     </PageTransitionProvider>
   );

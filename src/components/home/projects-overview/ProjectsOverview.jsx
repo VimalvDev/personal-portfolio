@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { BP } from "../../../utils/BreakPoints";
 import UpText from "../../animation/UpText";
-
+import Projects from "../../../pages/Projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,14 +46,13 @@ const projectsData = [
 
 function ProjectsOverview() {
   const headingSecRef = useRef(null);
-  const headingContainerRef = useRef(null);
   const wrapperRef = useRef(null);
 
   const centerRef = useRef(null);
   const topRef = useRef(null);
   const bottomRef = useRef(null);
 
-  const projectsContainer = useRef(null);
+
 
   useGSAP(
     () => {
@@ -75,12 +74,18 @@ function ProjectsOverview() {
         // slide inital values
         gsap.set(topRef.current, {
           xPercent: -100,
+          clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)",
         });
         gsap.set(centerRef.current, {
           xPercent: 100,
+          clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)",
         });
         gsap.set(bottomRef.current, {
           xPercent: -100,
+          clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)",
+        });
+        tl.set(wrapperRef.current, {
+          yPercent: 30,
         });
 
         tl.to([topRef.current, centerRef.current, bottomRef.current], {
@@ -88,6 +93,15 @@ function ProjectsOverview() {
           ease: "none",
           duration: 1,
         });
+        tl.to(
+          wrapperRef.current,
+          {
+            yPercent: 0,
+            ease: "none",
+            duration: 1,
+          },
+          0.1,
+        );
 
         tl.to(
           topRef.current,
@@ -113,7 +127,12 @@ function ProjectsOverview() {
           ease: "none",
           duration: 0.6,
         });
-   
+
+        tl.to([topRef.current, centerRef.current, bottomRef.current], {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+          ease: "none",
+          duration: 0.8,
+        }, 2.3);
       });
     },
     { scope: wrapperRef },
@@ -124,7 +143,7 @@ function ProjectsOverview() {
       ref={headingSecRef}
       className="headingSection  bg-light-black text-white overflow-hidden "
     >
-      <div className="md:min-h-screen min-h-[20svh] pt-[4em] w-full overflow-hidden md:pt-[6em]">
+      <div className="md:min-h-screen min-h-[20svh] pt-[8em] w-full overflow-hidden md:pt-[6em]">
         <div className="small_project_heading md:hidden w-full  h-full ">
           <UpText duration={1} delay={0.5} splitType="chars">
             <h1 className=" text-[32vw] text-center leading-[0.83]">
@@ -167,16 +186,16 @@ function ProjectsOverview() {
       </div>
 
       <div
-        ref={projectsContainer}
-        className="project_container  h-full w-full flex-col md:px-[2em] px-[1em]    "
+        className="project_container  flex h-full w-full flex-col md:px-[2em] px-[1em]    "
       >
-        <div className="page_project_number flex  justify-between items-center ">
+        <div className="page_project_number flex mb-[3em] justify-between items-center ">
           <UpText delay={1} duration={1}>
-            <span className="uppercase text-mid-gray text-[clamp(.694rem,1vw,1rem)]  ">
+            <span className="uppercase text-gray text-[clamp(.694rem,1vw,1rem)]  ">
               [ 03 - selected projects ]
             </span>
           </UpText>
-          <div className="project_heading-text flex justify-between bo items-center ">
+          {/* <div className="project_heading-text flex justify-between bo items-center ">
+
             <a
               href="/projects"
               className="project_type uppercase items-center flex gap-[1em] text-mid-gray "
@@ -184,10 +203,12 @@ function ProjectsOverview() {
               <span>show all</span>
               <FaArrowRight />
             </a>
-          </div>
+          </div> */}
+        </div>
+        <div className="projects_showcase">
+
         </div>
       </div>
-
     </section>
   );
 }

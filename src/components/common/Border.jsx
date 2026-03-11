@@ -11,6 +11,7 @@ const Border = ({
   animateOnScroll = false,
   hoverable = false, // ← add this
   hoverTriggerRef = null, // ← ref of the element that triggers hover
+  height = ".1em"
 }) => {
   const borderRef = useRef(null);
 
@@ -66,7 +67,7 @@ const Border = ({
     <div className="w-full overflow-hidden mb-[.1em] mt-[.3em]">
       <div
         ref={borderRef}
-        className="border_line w-full h-[.1em] bg-mid-gray"
+        className={`border_line w-full h-[${height}]  bg-gray`}
       />
     </div>
   );

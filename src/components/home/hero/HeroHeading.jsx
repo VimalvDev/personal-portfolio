@@ -17,7 +17,7 @@ function HeroHeading() {
       <div className="hero_text_bottom  text-light-black font-bebas ">
         <div className="hero_text-heading  text-start ">
           <UpText delay={0.4} duration={1} animateOnScroll={false} splitType="chars" >
-            <h1 className="  md:text-[clamp(10rem,21vw,21rem)] text-[26vw] leading-[.86em] -mb-[1em] inline-block  ">
+            <h1 className="  md:text-[clamp(10rem,21vw,21rem)]  text-[26vw] leading-[.86em] -mb-[1em] inline-block  ">
               creative
             </h1>
           </UpText>

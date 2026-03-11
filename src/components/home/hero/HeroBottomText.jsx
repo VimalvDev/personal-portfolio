@@ -45,13 +45,13 @@ function HeroBottomText() {
 
       <div className="hero_bottom_text w-[70%] h-full overflow-x-hidden text-right max-sm:w-full">
         <div className="hero_bottom_text_container inline-block pl-[20em] max-sm:pl-0 max-sm:w-[65vw] max-sm:mb-[em]  ">
-          <div className="top uppercase text-dark-gray text-[clamp(.8rem,1vw,1rem)] inline-block leading-[1.1em] max-sm:mb-[1em] mt-[1em]  cursor-target">
+          <div className="top uppercase text-dark-gray text-[clamp(.8rem,1vw,1rem)] inline-block leading-[1.1em] mt-[1em] ">
             <UpText delay={0.9} duration={1} animateOnScroll={false} disableOnMobile={false} >
               <p className="text-right">crafting modern, visually driven websites from concept to code and deployment.</p>
             </UpText>
           </div>
           <Border />
-          <div className="bottom uppercase text-gray cursor-target">
+          <div className="bottom uppercase text-gray">
             <div className="text-[clamp(.694rem,1vw,1rem)] leading-[.9em] tracking-tight inline-block">
               <UpText delay={0.9} duration={1} animateOnScroll={false} disableOnMobile >
                 <div className="side_text flex flex-wrap">

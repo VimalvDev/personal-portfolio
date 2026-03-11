@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import { usePageTransition } from "../../hooks/usePageTransition";
 import DecryptedText from "../animation/motion/DecryptedText";
 import UpText from "../animation/UpText";
+import { CgMenuRight } from "react-icons/cg";
+
 
 function Nav() {
   const navigateWithTransition = usePageTransition();
@@ -46,7 +48,7 @@ function Nav() {
   };
 
   return (
-    <nav className="flex justify-between w-full px-[2em] h-[4.5em] max-sm:px-0    items-center z-50  fixed mix-blend-difference text-white ">
+    <nav className="md:flex justify-between w-full px-[2em] h-[4.5em] max-sm:px-0 hidden   items-center z-50  fixed mix-blend-difference text-white ">
       {/* Logo - also clickable (goes to home) */}
       <div className="nav_logo text-[clamp(0.694rem,1.1vw,1.4rem)] max-sm:hidden ">
         <div
@@ -58,7 +60,16 @@ function Nav() {
       </div>
 
       {/* Navigation Links */}
-      <div className="nav_link ">
+      <div className="nav">
+        <span className="uppercase flex justify-center items-center gap-[.5em] " >
+          <span>
+            menu
+            </span>
+          <CgMenuRight />
+
+        </span>
+      </div>
+      <div className="nav_link hidden ">
         <ul className="uppercase text-[clamp(0.694rem,1vw,1.3rem)] flex gap-[1em] ">
           {/* ABOUT: Hash navigation - scrolls to #about on home page */}
           <li>

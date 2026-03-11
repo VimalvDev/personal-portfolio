@@ -4,63 +4,48 @@ import UpText from "../animation/UpText";
 import Border from "./Border";
 
 const Footer = () => {
-  const linkRef1 = useRef(null);
-  const linkRef2 = useRef(null);
-  const linkRef3 = useRef(null);
   const time = useClock("Asia/Kolkata");
 
   return (
-    <footer className="bg-very-light min-h-[70vh] flex justify-end p-[1em]  md:py-[1.5em] md:px-[2em] flex-col border ">
-      <div className="footer_social_link  ">
-        <div className="email font-bold text-[clamp(1.5rem,3vw,3rem)] text-end mb-[.5em] ">
+    <footer className="bg-very-light h-full flex justify-end p-[1em] pt-[4em]  md:pb-[1.5em] pb-[1.5em] md:px-[2em] flex-col border ">
+      <div className="footer_social_link flex flex-col mb-[2em]  items-center md:items-end  ">
+        <div className="email font-bold text-[6vw] md:text-[clamp(1rem,3vw,3rem)] text-end mb-[.5em] ">
           <a href="mailto:vimalverma8287@gmail.com">vimalverma8287@gmail.com</a>
         </div>
 
-        <div className="social_media flex w-full uppercase justify-end mb-[1em] gap-[5em] ">
-          <div className="github  overflow-hidden  ">
+        <div className="social_media flex w-full flex-col md:flex-row  uppercase justify-end leading-0 items-center tracking-tight mb-[1em] gap-[1em] md:gap-[2em] ">
+          <div className="github  flex   justify-start items-start  ">
+
             <a
-              ref={linkRef1}
-              className="text-[clamp(1rem,2vw,2rem)] leading-[.85em]  "
+            className="text-[clamp(1rem,2vw,2rem)] leading-[.85em]"
               href="#"
             >
-              github
-            </a>
-            <Border
-              animateOnScroll={true}
-              ho
-              hoverable={true}
-              hoverTriggerRef={linkRef1}
-            />
+
+              [ github ] 
+
+
+            
+              </a>
           </div>
           <div className="linkedin">
             <a
-              ref={linkRef2}
+
               className="text-[clamp(1rem,2vw,2rem)] leading-[.85em]   "
               href="#"
             >
-              linkedin
+              [ linkedin ]
             </a>
-            <Border
-              animateOnScroll={true}
-              ho
-              hoverable={true}
-              hoverTriggerRef={linkRef2}
-            />
+          
           </div>
           <div className="twitter">
             <a
-              ref={linkRef3}
+
               className="text-[clamp(1rem,2vw,2rem)] leading-[.85em]  "
               href="#"
             >
-              x/twitter
+              [ x/twitter ]
             </a>
-            <Border
-              animateOnScroll={true}
-              ho
-              hoverable={true}
-              hoverTriggerRef={linkRef3}
-            />
+          
           </div>
         </div>
       </div>
